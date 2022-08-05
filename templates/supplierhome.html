@@ -1,0 +1,78 @@
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Quadroway | About</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/Medic_template/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/static/Medic_template/css/coin-slider.css" />
+<script type="text/javascript" src="/static/Medic_template/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/static/Medic_template/js/cufon-quicksand.js"></script>
+<script type="text/javascript" src="/static/Medic_template/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/static/Medic_template/js/script.js"></script>
+<script type="text/javascript" src="/static/Medic_template/js/coin-slider.min.js"></script>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1><a href="login.html">Quadro<span>way</span> <small>Shop Here</small></a></h1>
+      </div>
+      <div class="menu_nav">
+        <ul>
+          <li><a href="{% url 'AddProduct' %}"><span>Add Product</span></a></li>
+          <li><a href="{% url 'ViewOrder' %}"><span>View Order</span></a></li>
+          <li><a href="{% url 'ViewMyProducts' %}"><span>View my Products</span></a></li>
+         
+          
+        </ul>
+      </div>
+      <div class="clr"></div>
+      <div class="slider">
+        <div id="coin-slider"> <a href="#"><img src="/static/Medic_template/images/Tulips.jpg" width="800" height="293" alt="" /> </a> <a href="#"><img src="/static/Medic_template/images/slide2.jpg" width="935" height="293" alt="" /> </a> <a href="#"><img src="/static/Medic_template/images/slide3.jpg" width="935" height="293" alt="" /> </a> </div>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          
+        
+          
+          <div class="clr"></div>
+{% block content %}
+{% endblock %}
+          </div>
+      </div>
+      <div class="sidebar">
+        
+ <div class="clr"></div>
+        <div class="gadget">
+          
+          <div class="clr"></div>
+          <ul class="sb_menu">
+            <li><a href="{% url 'AddProduct' %}">&raquo; Add Product</a></li>
+            <li><a href="{% url 'ViewOrder' %}">&raquo; View Order</a></li>
+            <li><a href="{% url 'ViewMyProducts' %}">&raquo; View my Products</a></li>
+        
+           
+          </ul>
+        </div>
+ </div>
+ <div class="clr"></div>
+ </div>
+  </div>       
+  
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">&copy; Copyright <a href="#">MyWebSite</a>.</p>
+      <p class="rf">Design by Dream <a href="http://www.dreamtemplate.com/">Web Templates</a></p>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

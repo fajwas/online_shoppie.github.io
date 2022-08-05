@@ -1,0 +1,30 @@
+{% extends 'supplierhome.html' %}
+{% block content %}
+<head><h1>Add Product</h1></head>
+<form method="post" action="{% url 'AddProductAction' %}" enctype="multipart/form-data">
+{% csrf_token %}
+
+<table>
+<tr><td>
+Name:</td><td><input type="text" name="name" id="name" value=""/>
+</td></tr>
+
+<tr><td>
+Specification</td><td><input type="text" name="specification" id="specification" value=""/>
+</td></tr>
+
+<tr><td>
+Image:</td><td><input type="file" name="image" id="image" value=""/>
+</td></tr>
+
+<tr><td>
+Rate:</td><td><input type="text" name="rate" id="rate" value=""/>
+</td></tr>
+
+<tr><td>
+<input type="submit" name="submit" id="submit" value="save"/>
+</td></tr>
+
+</table>
+</form>
+{% endblock %}

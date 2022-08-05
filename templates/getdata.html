@@ -1,0 +1,21 @@
+{% extends 'userhome.html' %}
+{% block content %}
+<table>
+<tr><th>Name</th>
+    <th>Specification</th>
+    <th>Image</th>
+    <th>Rate</th>
+</tr>
+
+{% for v in data %}
+<tr><td>{{v.name}}</td>
+    <td>{{v.specification}}</td>
+    <td><img src="{{v.image.url}}" alt="No uploads" height="120px" width="120px"/></td>
+    <td>{{v.rate}}</td>
+    <td><a href="{% url 'AddtoCart' v.id %}">Add to Cart</a></td>
+</tr>
+
+{% endfor %}
+
+</table>
+{% endblock %}

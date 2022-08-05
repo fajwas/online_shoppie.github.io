@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head><h1>Supplier Registration</h1>
+<script src="/static/jquery.min.js"></script>
+<script>
+ $(document).ready(function(){
+ $('#country').change(function(){
+var cid=$('#country').val()
+ $.ajax({
+  url:"{% url 'getstate' %}",
+  data:{'countryid':cid},
+  success:function(data){
+  $('#state').html(data)
+  }
+ });
+ });
+ $('#state').change(function(){
+ var sid=$('#state').val()
+ $.ajax({
+  url:"{% url 'getdistrict' %}",
+  data:{'stateid':sid},
+  success:function(data){
+  $('#district').html(data)
+  }
+ });
+ });
+ });
+</script></head>
+
+
+<form method="post" action="{% url 'SupplierRegisterAction' %}" enctype="multipart/form-data">
+{% csrf_token %}
+
+<table>
+<tr><td>
+Name:</td><td><input type="text" name="name" id="name" value=""/>
+</td></tr>
+
+<tr><td>
+Gender:</td><td><input type="radio" name="gender" id="gender" value="male">Male
+<input type="radio" name="gender" id="gender" value="female">Female
+</td></tr>
+
+<tr><td>
+Date of birth:</td><td><input type="date" name="dob" id="dob" value="">
+</td></tr>
+
+<tr><td>
+Address:</td><td><input type="text" name="address" id="address" value="">
+</td></tr>
+
+<tr><td>
+Proof:</td><td><input type="file" name="proof" id="proof" value="">
+</td></tr>
+
+<tr><td>
+Contact number:</td><td><input type="text" name="number" id="number" value=""/>
+</td></tr>
+
+<tr><td>
+Country:</td><td><select name="country" id="country">
+<option value="1">Select</option>
+{% for v in data %}
+<option value="{{v.id}}">{{v.name}}</option>
+{% endfor %}
+</select>
+</td></tr>
+
+<tr><td>
+State:</td><td><select name="state" id="state">
+<option value="1">Select</option>
+</select>
+</td></tr>
+
+<tr><td>
+District:</td><td><select name="district" id="district">
+<option value="1">Select</option>
+</select>
+</td></tr>
+
+<tr><td>
+Username:</td><td><input type="text" name="uname" id="uname" value=""/>
+</td></tr>
+
+<tr><td>
+Password:</td><td><input type="password" name="psword" id="psword" value=""/>
+</td></tr>
+
+<tr><td>
+<input type="submit" name="submit" id="submit" value="submit">
+</td></tr>
+
+{% if msg %}
+{{msg}}
+{% endif %}
+
+</table>
+</form>
+{% endblock %}
+

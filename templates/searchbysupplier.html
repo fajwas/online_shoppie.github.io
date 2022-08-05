@@ -1,0 +1,36 @@
+{% extends 'userhome.html' %}
+{% block content %}
+<head><script src="/static/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+ $('#supplier').change(function(){
+ $('#supplier').val()
+ var s=$('#supplier').val()
+ $.ajax({
+  url:"{% url 'getdatas' %}",
+  data:{'search_sup':s},
+  success:function(data){
+  $('#name').html(data)
+ }
+});
+});
+});
+</script>
+</head>  
+<body>
+<table>
+<tr><td>
+Supplier</td><td><select name="supplier" id="supplier" >
+                 <option value="1">select</option>
+{% for v in data %}
+                 <option value="{{v.id}}">{{v.name}}</option>
+{% endfor %}
+</td></tr>
+</select>
+
+<tr><td>
+<p id='name'></p>
+</td></tr>
+</table>
+{% endblock %}

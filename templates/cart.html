@@ -1,0 +1,60 @@
+{% extends 'userhome.html' %}
+{% block content %}
+<head>
+<script src="/static/jquery.min.js"></script>
+<script>
+ $(document).ready(function(){
+ $('#amount').change(function(){
+ var a=$('#amount').val()
+ var r=$('#rate').val()
+ var c=a*r
+ $('#totalcost').val(c)
+});
+});
+</script>
+</head>
+ 
+<body>
+<form method="post" action="{% url 'CartAction' %}" enctype="multipart/form-data">
+{% csrf_token %}
+<table>
+{% for v in data %}
+<tr><td>
+Name:</td><td>{{v.name}}</td></tr>
+
+<tr><td>
+Image:</td><td><img src="{{v.image.url}}" alt="No uploads" height="120px" width="120px"/>
+</td></tr>
+
+<tr><td>
+Specification:</td><td>{{v.specification}}</td></tr>
+
+<tr><td>
+Rate:</td><td>{{v.rate}}</td></tr>
+<input type="hidden" name="rate" id="rate" value="{{v.rate}}"/>
+
+<input type="hidden" name="productid" id="productid" value="{{v.id}}">
+
+
+
+<input type="hidden" name="supplierid" id="supplierid" value="{{v.sid_id}}"/>
+
+
+{% endfor %}
+
+<tr><td>
+Amount:</td><td><input type="text" name="amount" id="amount" value=""/>
+</td></tr>
+
+<tr><td>
+Total Cost:</td><td><input type="text" name="totalcost" id="totalcost" value=""/>
+</td></tr>
+
+
+<tr><td>
+<input type="submit" name="submit" id="submit" value="add"/>
+</td></tr>
+
+
+</table>
+{% endblock %}

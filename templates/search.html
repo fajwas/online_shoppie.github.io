@@ -1,0 +1,29 @@
+{% extends 'userhome.html' %}
+{% block content %}
+<head>
+<script src="/static/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+ $('#search').change(function(){
+ $('#search').val()
+ var s=$('#search').val()
+ $.ajax({
+  url:"{% url 'getdata' %}",
+  data:{'search_text':s},
+  success:function(data){
+  $('#name').html(data)
+ }
+});
+});
+});
+</script>
+</head>  
+<body>
+<tr><td>
+Search:</td><td>
+<input type="text" name="search" id="search" value=""/>
+</td></tr>
+<p id='name'></p>
+
+{% endblock %}

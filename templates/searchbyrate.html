@@ -1,0 +1,33 @@
+{% extends 'userhome.html' %}
+{% block content %}
+<head><script src="/static/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+ $('#rate').change(function(){
+ $('#rate').val()
+ var s=$('#rate').val()
+ $.ajax({
+  url:"{% url 'getrate' %}",
+  data:{'search_rate':s},
+  success:function(data){
+  $('#name').html(data)
+ }
+});
+});
+});
+</script>
+</head>  
+<body>
+<table>
+<tr><td>
+Rate</td><td><input type="text" name="rate" id="rate" value="" />
+
+</td></tr>
+
+
+<tr><td>
+<p id='name'></p>
+</td></tr>
+</table>
+{% endblock %}
